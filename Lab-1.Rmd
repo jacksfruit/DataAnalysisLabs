@@ -1,0 +1,99 @@
+---
+title: "Data Analysis and Statistical Interference - Unit 1 (Lab)"
+output: html_document
+---
+
+```{r loadData}
+source("http://www.openintro.org/stat/data/cdc.R")
+names(cdc)
+```
+
+```{r question-1}
+str(cdc)
+dim(cdc)
+```
+
+```{r question-2}
+class(cdc$genhlth)
+levels(cdc$genhlth)
+```
+
+```{r question-3}
+class(cdc$weight)
+```
+
+```{r question-4}
+head(cdc)
+tail(cdc)
+```
+
+```{r question-5}
+summary(cdc$gender)
+table(cdc$gender)
+barplot(table(cdc$gender))
+```
+
+```{r question-6}
+table(cdc$genhlth)/nrow(cdc)
+```
+
+```{r question-7}
+gender_smokers = table(cdc$gender, cdc$smoke100)
+gender_smokers
+mosaicplot(gender_smokers)
+```
+
+```{r question-8}
+under23_and_smoke = subset(cdc, cdc$age < 23 & cdc$smoke100 == 1)
+dim(under23_and_smoke)
+```
+
+```{r question-9}
+boxplot(cdc$height)
+summary(cdc$height)
+boxplot(cdc$height ~ cdc$gender)
+
+## Note: BMI = (weight [lb] / height [in]^2) * 703, wehre 703 is the approximate conversion factor to change units from metric (meters and kilograms) to imperial (inches and pounds)
+
+bmi = (cdc$weight/cdc$height^2) * 703
+boxplot(bmi ~ cdc$genhlth)
+```
+
+```{r question-10}
+hist(bmi, breaks = 50)
+plot(cdc$weight, cdc$wtdesire)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

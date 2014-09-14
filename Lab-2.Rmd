@@ -1,0 +1,87 @@
+---
+title: "Data Analysis and Statistical Interference - Unit 2 (Lab)"
+output: html_document
+---
+
+```{r loadData}
+load(url("http://www.openintro.org/stat/data/kobe.RData"))
+head(kobe)
+kobe$basket[1:9]  
+kobe$basket[kobe$game == 1 & kobe$quarter == 1]  ## Game 1, 1st quarter
+```
+
+
+
+```{r question-3}
+kobe_streak <- calc_streak(kobe$basket)
+barplot(table(kobe_streak))  ## table function lists frequencies (i.e. counts) of each streak
+streak_median = median(kobe_streak)  ## calculate median
+summary(kobe_streak)  ## IQR = 3rd Qu. - 1st Qu.
+boxplot(kobe_streak)  ## Boxplot shows that streak 3 and 4 are unusual
+```
+
+
+```{r question-6}
+# Coin simulations
+coin_outcomes <- c("heads", "tails")
+
+## simulation of 100 *fair* coin flips
+sim_fair_coin <- sample(coin_outcomes, size = 100, replace = TRUE)  
+table(sim_fair_coin)
+
+## Simulation of 100 *unfair* coin flips with a probability of 20% for outcome "heads" (and 80% for outcome "tails")
+p_unfair_coin <- c(0.2, 0.8)
+sim_unfair_coin <- sample(coin_outcomes, size = 100, replace = TRUE, prob = p_unfair_coin)
+table(sim_unfair_coin)
+100 * p_unfair_coin[1]  ## expected "heads" wiht unfair coin
+
+# Basketball simulation
+basket_outcomes <- c("H", "M")
+p_basket <- c(0.45, 0.55)  ## probability of a hit ("H") is 45%
+sim_basket <- sample(basket_outcomes, size = nrow(kobe), replace = TRUE, prob = p_basket) 
+table(sim_basket)
+```
+
+
+```{r question-7-8}
+indep_streak <- calc_streak(sim_basket)
+barplot(table(indep_streak))  ## table function lists frequencies (i.e. counts) of each streak
+indep_streak_median = median(indep_streak)  ## calculate median
+summary(indep_streak)  ## IQR = 3rd Qu. - 1st Qu.
+boxplot(indep_streak)  ## Boxplot shows that streak 3 and 4 are unusual
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
