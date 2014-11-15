@@ -1,0 +1,75 @@
+---
+title: "Data Analysis and Statistical Interference - Unit 5 (Lab)"
+output: html_document
+---
+
+# Lab Unit 5:
+
+
+```{r loadData}
+source("http://bit.ly/dasi_inference")
+load(url("http://www.openintro.org/stat/data/atheism.RData"))
+
+```
+
+
+```{r question-7}
+us12 = subset(atheism, atheism$nationality=="United States" & atheism$year=="2012")
+nrow(us12[us12$response=="atheist",]) / nrow(us12)
+
+```
+
+
+```{r question-8}
+inference(us12$response, est = "proportion", type = "ci", method = "theoretical", success = "atheist")
+
+(0.0634 - 0.0364)/2
+```
+
+
+```{r question-9}
+n <- 1000
+p <- seq(0, 1, 0.01)
+ME <- 2 * sqrt(p * (1 - p)/n)
+plot(ME ~ p, cex.axis=1)
+```
+
+
+```{r question-10}
+es = subset(atheism, atheism$nationality=="Spain")
+
+## Use inference function for a two-sided hypothesis test where the response variable are the atheism responses from spain ('atheist', 'non-atheist') and the explanatory variable is the year (2005, 2012):
+inference(es$response, as.factor(es$year), est="proportion", type="ht", null=0, alternative ="twosided", method="theoretical", success="atheist")
+
+```
+
+
+```{r question-11}
+us = subset(atheism, atheism$nationality=="United States")
+
+inference(us$response, as.factor(us$year), est="proportion", type="ht", null=0, alternative ="twosided", method="theoretical", success="atheist")
+
+```
+
+
+```{r question-12}
+n <- 39 
+alpha <- 0.05
+n*alpha
+```
+
+
+```{r question-13}
+Z <- qnorm(0.975)  # 95% confidence
+ME <- 0.01
+p <- 0.5  # most conservative estimate
+n <- Z^2 * p*(1-p)/ME^2
+n
+
+```
+
+
+
+n = z2 * p^(1 - p^)/ ME2
+
+

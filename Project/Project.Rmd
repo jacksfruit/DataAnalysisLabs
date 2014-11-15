@@ -1,0 +1,213 @@
+---
+title: 'Are political more conservative Americans more willing to continue working
+  after they get rich? '
+output:
+  html_document:
+    theme: cerulean
+  word_document: default
+date: "10/18/2014"
+---
+
+<!-- Enter the code required to load your data in the space below. The data will be loaded but the line of code won't show up in your write up (echo=FALSE) in order to save space-->
+```{r echo=FALSE}
+load(url("http://bit.ly/dasi_gss_data"))
+
+```
+
+
+### Introduction:
+
+The General Social Survey (GSS) is a sociological survey used to collect data on demographic characteristics and attitudes of residents of the United States [1]. The survey is conducted face-to-face with an in-person interview by the National Opinion Research Center at the University of Chicago, of adults (18+) in randomly selected households. The GSS survey was conducted every year from 1972 to 1994 (except in 1979, 1981, and 1992). Since 1994, it has been conducted every other year.   
+The most recent data is from 2012 and in this retrospective observational study we want to **find out if in 2012 political more conservative US residents were more willing to continue working after they get rich. 
+From the conclusion of this study we will be able to see if there is an association between the (self declared) political view and the willingness to continue working as a rich person of US residents in 2012.**
+
+
+### Data:
+
+The cases used in this study are residents of the United States in 2012 which participated in the GSS survey. *Only the subset of the GSS data [2] for the year 2012 will be used here.*  
+This study is based on the two variables of the GSS data subset stating the participant's answers regarding their political view (various levels) and if they would continue working if they get rich (yes/no).
+
+Variable `polviews`:  
+
+* short description: think of self as liberal or conservative  
+* type: oridnal (categorical), as there is an order of how much conservative a respondents political view is  
+* values: "Extremely Liberal", "Liberal",  "Slightly Liberal", "Moderate", "Slightly Conservative" "Conservative", "Extrmly Conservative"  
+
+Variable `richwork`:  
+
+* short description: if rich, continue or stop working  
+* type: regular categorical  
+* values: "Continue Working", "Stop Working" 
+
+A full description of the variables used in the GSS survey can be found in the codebook [3].
+
+In order to generalize to the population of interest, i.e. all residents of the United States in 2012, the sample has to be random and representative. The GSS is a reputable survey using an adequate sampling method, so we can treat the sample as random and representative. 
+We can exclude convenience sample and voluntary response as sources of bias because of the sampling method that was used in the survey. We cannot exclude a non-response bias as participation in the survey is not mandatory, for example poor conservatives might be less likely to participate in the survey. However, missing values seem to be random (i.e. there's no pattern behind the missing values).  
+The study will not be able to tell if any discovered association between the two variables is causal, as in order to say that an association is causal it would be necessary to conduct an experiment with a control group.
+
+### Exploratory data analysis:
+
+First create a subset of the gss data with only the variables `polviews` and `richwork` and exclude cases with missing values:
+
+```{r transformData}
+df_data <- gss[gss$year==2012, c("polviews", "richwork")]
+df_data.clean <- df_data[complete.cases(df_data),]  ## exclude cases with NA values
+```
+  
+The contingency table below show the counts (frequencies) of all combinations for the two variables `polviews` and `richwork`:  
+
+```{r exploreData-1, echo=FALSE}
+# Contingency table:
+m_con.tab <- table(df_data$polviews, df_data$richwork)
+m_con.tab
+```
+  
+```{r exploreData-2, echo=FALSE, results="hide", fig.keep='none'}
+library(ggplot2)
+library(scales)
+
+g1 <- ggplot(data=df_data.clean, aes(x=polviews, fill=richwork)) + labs(title="Barplot")
+g1 <- g1 + geom_bar(position=position_dodge()) + theme(legend.position = "top")
+g1 <- g1 + theme(axis.text.x = element_text(size=14, angle = 90, vjust = 0.40)) 
+g1 <- g1 + scale_fill_manual(values=c("darkgreen", "darkred"))
+print(g1)
+```
+  
+The following segmented barplot shows the counts (frequencies) stacked on top of each other:  
+
+```{r exploreData-3, echo=FALSE, results="hide"}
+g2 <- qplot(x=polviews,
+           data = df_data.clean, 
+           geom="bar", fill=richwork)
+g2 <- g2 + ggtitle("Segmented Barplot")
+g2 <- g2 + theme(legend.position = "top")
+g2 <- g2 + theme(axis.text.x = element_text(size=9, angle = 90, vjust = 0.40)) 
+g2 <- g2 + scale_fill_manual(values=c("darkgreen", "darkred"))
+print(g2)
+```
+  
+The proportions of `richwork` values for each value of `polviews` are shown in the contingency table with row frequencies below:
+
+```{r exploreData-4, echo=FALSE}
+m_con.tab.rel <- m_con.tab/rowSums(m_con.tab)  ## calculate relative frequencies per row of contingency matrix
+df_data.freq <- as.data.frame(m_con.tab.rel)  ## convert contingency matrix to data frame (returns also a "Freq" variable)
+names(df_data.freq)[1:2] <- c("polviews", "richwork")
+m_con.tab.rel
+```
+  
+Relative frequency segmented barplot shows the percentage per bar:
+
+```{r exploreData-5, echo=FALSE}
+g3 <- ggplot(df_data.freq, aes(x=polviews, y=Freq, fill=richwork)) + labs(title="Plot")
+g3 <- g3 + geom_bar(stat="identity") #, colour="white")
+g3 <- g3 + ggtitle("Relative Frequency Segmented Barplot")
+g3 <- g3 + theme(legend.position = "top")
+g3 <- g3 + theme(axis.text.x = element_text(size=9, angle = 90, vjust = 0.40)) 
+g3 <- g3 + scale_y_continuous(labels=percent) ## show tick labels of y-axis as percentage
+g3 <- g3 + scale_fill_manual(values=c("darkgreen", "darkred"))
+print(g3)
+```
+
+A mosaic plot can be used to visualize both, the absolute counts (width of segments) and the relative frequencies (height of segments). Here `polviews` is the explanatory variable (x-axis) and `richwork` is the response variable (y-axis):  
+
+```{r exploreData-6, echo=FALSE, results="hide"}
+library(vcd)
+par(mar=c(2, 4, 4, 2) + 0.1)
+mosaicplot(~ polviews + richwork, data = df_data.clean, color = c("darkgreen", "darkred"), las = 2, cex.axis=0.7, main="Mosaic Plot")
+```
+
+The exploratory analysis suggests that there is only a slight difference between the different political views if someone will continue working after he/she gets rich. Only the extremely conservative people seem to be more willing to continue working.
+
+### Inference:
+
+The method used to compare proportions across several groups where both variables are categorical and at least one has more than two levels is the **Chi-square test of independence**. Chi-square is used to compare observed data with data we would expect to obtain according to a specific hypothesis. As there is no defined parameter of interest no other method is applicable and hence there's nothing to compare.
+
+The **conditions for the chi-square test** are:  
+
+1. **Independence**: sampled observations must be independent  
+    * random sample/assignment  
+    * if sampling without replacement, n < 10% of the population  
+    * each case only contributes to one cell in the table  
+2. **Sample size**: each particular scenario (i.e. cell) must have at least 5 expected cases  
+
+For the independence condition we can assume that all conditions are met as the data is a subset of the GSS data.
+To check the sample size condition we calculate the expected cases using the formula  
+$$\frac{\text{row total} \times \text{column total}}{\text{table total}}$$
+
+```{r size-condition}
+row.totals <- rowSums(m_con.tab)
+col.totals <- colSums(m_con.tab)
+tab.total <- sum(m_con.tab)
+
+m_expected <- matrix(nrow=length(row.totals), ncol=length(col.totals), dimnames=dimnames(m_con.tab))
+for (i in 1:length(row.totals)) { 
+    for (j in 1:length(col.totals)) {
+        m_expected[i,j] <- row.totals[i]*col.totals[j]/tab.total 
+    }
+}
+m_expected
+```
+
+The sample size condition is met as for all combinations of the two variables the **expected cases are > 5**. Therefore a **theoretical** approach can be used here.
+
+The chi-square test is always testing the null hypothesis, which states that there is no significant difference between the expected and observed result:
+  
+$H_0\text{: the two variables are independent  vs. }H_A\text{: the two variables are dependent}$  
+
+**Degrees of freedom:**  $\text{df = (# rows - 1) }\times\text{ (# columns - 1) = 1 }\times\text{ 6 = 6}$
+
+**Chi-square statistic**: $\sum_{i=1}^{k} \frac{(O-E)^2}{E}$
+
+That is, chi-square is the sum of the squared difference between observed (O) and the expected (E) data, divided by the expected data in all possible combinations of the two variables. 
+
+```{r chisq-statistic}
+chisq.statistic <- 0; ## init chi-square statistic variable
+for (i in 1:length(row.totals)) { 
+    for (j in 1:length(col.totals)) {
+        chisq.statistic <- chisq.statistic + (m_con.tab[i,j] - m_expected[i,j])^2/m_expected[i,j] 
+    }
+}
+chisq.statistic
+df <- (length(row.totals)-1) * (length(col.totals)-1)
+df
+pvalue <- pchisq(chisq.statistic, df, lower.tail=FALSE)
+pvalue
+```
+The calculated $\chi^2$ statistic is **`r chisq.statistic`** and the degrees of freedom are **`r df`**. Using the *`pchisq`* function we get a p-value of **`r pvalue`**.
+
+We can also use the *`chisq.test`* or *`inference`* function and get the same $\chi^2$ statistic and p-value (see Appendix A).
+
+### Conclusion:
+
+The p-value is the probability $\text{P(observed or more extreme outcome | }H_0\text{ is true)}$.
+
+As the p-value `r pvalue` is greater than any commonly used significance level (e.g. 5%), we do **not reject the null hypothesis that the `polview` variable is independent of the `richwork` variable. Large deviations from what would be expected based on sampling variation (chance) alone do not provide strong evidence for the alternative hypothesis.**
+ 
+In a possible future research, we might restrict the data to a specific age range and/or sex in order to restrict the influence of possible confounding variables.
+Also, with this kind of analysis we are not able to deduce a causal relationship between the two variables, as it is not an experiment where a test group and a control group (with random assignment) are compared to each other.
+
+### References:
+
+[1] Smith, Tom W., Michael Hout, and Peter V. Marsden. General Social Survey, 1972-2012 [Cumulative File]. ICPSR34802-v1. Storrs, CT: Roper Center for Public Opinion Research, University of Connecticut /Ann Arbor, MI: Inter-university Consortium for Political and Social Research [distributors], 2013-09-11. doi:10.3886/ICPSR34802.v1 (URL: http://doi.org/10.3886/ICPSR34802.v1)  
+[2] General Social Survey (GSS) Data: http://bit.ly/dasi_gss_data   
+[3] Codebook: https://d396qusza40orc.cloudfront.net/statistics%2Fproject%2Fgss1.html  
+
+### Appendix:
+
+#### A. Alternative Calculation 
+
+Use the *`chisq.test`* and *`inference`* functions to calculate the $\chi^2$ statistic and the p-value:
+
+```{r inference}
+chisq.test(df_data.clean$richwork, df_data.clean$polview)
+
+source("http://bit.ly/dasi_inference")
+inference(df_data.clean$richwork, df_data.clean$polview, est="proportion", type="ht", method="theoretical", alternative="greater")
+```
+
+#### B. Sample Data:
+
+```{r sample-data}
+head(df_data.clean, 60)
+```
+

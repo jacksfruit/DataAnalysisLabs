@@ -1,0 +1,116 @@
+---
+title: "Data Analysis and Statistical Interference - Unit 6 (Lab)"
+output: html_document
+---
+
+# Lab Unit 6:
+
+
+```{r loadData}
+source("http://bit.ly/dasi_inference")
+load(url("http://www.openintro.org/stat/data/mlb11.RData"))
+
+```
+
+
+```{r question-2}
+plot(y = mlb11$runs, x = mlb11$at_bats, cex.axis=1)
+cor(mlb11$runs, mlb11$at_bats)
+```
+
+
+```{r residuals}
+plot_ss(x = mlb11$at_bats, y = mlb11$runs, showSquares = TRUE)
+
+```
+
+
+```{r lm}
+m1 <- lm(runs ~ at_bats, data = mlb11)
+summary(m1)
+
+```
+
+
+```{r question-4}
+m2 <- lm(runs ~ homeruns, data = mlb11)
+summary(m2)
+```
+
+
+```{r prediction}
+plot(mlb11$runs ~ mlb11$at_bats)
+abline(m1)
+```
+
+
+```{r question-5}
+y_hat <- -2789.2429 + 0.6305*5579           ## predicted y value
+y     <- mlb11$runs[mlb11$at_bats == 5579]  ## observed y value
+y - y_hat
+
+```
+
+
+```{r question-6and8}
+plot(m1$residuals ~ mlb11$at_bats)
+abline(h = 0, lty = 3) ## adds a horizontal dashed line at y = 0
+
+```
+
+
+```{r question-7}
+par(mfrow=c(1,2))
+hist(m1$residuals)
+qqnorm(m1$residuals)
+qqline(m1$residuals) # adds diagonal line to the normal prob plot
+
+```
+
+
+```{r question-9}
+m3 <- lm(runs ~ hits, data = mlb11)
+summary(m3)
+
+m4 <- lm(runs ~ bat_avg, data = mlb11)
+summary(m4)
+
+m5 <- lm(runs ~ strikeouts, data = mlb11)
+summary(m5)
+
+m6 <- lm(runs ~ stolen_bases, data = mlb11)
+summary(m6)
+
+m7 <- lm(runs ~ wins, data = mlb11)
+summary(m7)
+
+```
+
+
+```{r question-10}
+m8 <- lm(runs ~ new_obs, data = mlb11)
+summary(m8)
+
+m9 <- lm(runs ~ new_slug, data = mlb11)
+summary(m9)
+
+m10 <- lm(runs ~ new_onbase, data = mlb11)
+summary(m10)
+
+# Plot data for the best predictor variable is "new_obs"
+par(mfrow=c(2,2))
+
+plot(mlb11$runs ~ mlb11$new_obs)
+abline(m8)
+
+hist(m8$residuals)
+
+plot(m8$residuals ~ mlb11$new_obs)
+abline(h = 0, lty = 3) ## adds a horizontal dashed line at y = 0
+
+qqnorm(m8$residuals)
+qqline(m8$residuals) # adds diagonal line to the normal prob plot
+
+
+
+```

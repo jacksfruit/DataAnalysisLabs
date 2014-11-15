@@ -1,0 +1,103 @@
+---
+title: "Data Analysis and Statistical Interference - Unit 4 (Lab)"
+output: html_document
+---
+
+# Lab Unit 4:
+
+## Part A
+
+```{r loadData}
+load(url("http://bit.ly/dasi_nc"))
+
+```
+
+
+```{r exploreData}
+summary(nc)
+```
+
+
+```{r question-2}
+summary(nc)[,8]
+
+```
+
+
+```{r question-3}
+gained_clean = na.omit(nc$gained)
+n = length(gained_clean)
+
+boot_means = rep(NA, 100)   ## init vector
+for(i in 1:100) {
+  boot_sample = sample(gained_clean, n, replace = TRUE)  ## sample with replacement
+  boot_means[i] = mean(boot_sample)
+}
+
+hist(boot_means, breaks = 100)
+
+
+```
+
+
+```{r exercise-bootstrap}
+boot_m <- mean(boot_means)
+boot_se <- sd(boot_means)
+Z <- qnorm(0.95)  ## 95th standard normal quantile
+boot_m + c(-1,1)*Z*boot_se
+
+```
+
+
+```{r inference-function}
+source("http://bit.ly/dasi_inference")
+inference(nc$gained, type = "ci", method = "simulation", conflevel = 0.9, est = "mean", boot_method = "perc")  ## mean with percentile method
+inference(nc$gained, type = "ci", method = "simulation", conflevel = 0.9, est = "mean", boot_method = "se")  ## mean with SE method
+inference(nc$gained, type = "ci", method = "simulation", conflevel = 0.9, est = "median",boot_method = "se")  ## median wih SE method
+
+```
+
+
+```{r question-6}
+boxplot(nc$weight~nc$habit)
+
+by(nc$weight, nc$habit, mean)
+
+```
+
+
+```{r question-7}
+by(nc$weight, nc$habit, length)
+
+inference(y = nc$weight, x = nc$habit, est = "mean", type = "ht", null = 0, alternative = "twosided", method = "theoretical")
+
+inference(y = nc$weight, x = nc$habit, est = "mean", type = "ci", conflevel = 0.95, method = "theoretical")
+```
+
+
+```{r question-8}
+levels(nc$mature)
+c(max(nc$mage[nc$mature == 'younger mom']), min(nc$mage[nc$mature == 'mature mom']))
+
+```
+
+
+## Part B
+
+```{r question-9}
+load(url("http://bit.ly/dasi_gss_ws_cl"))
+summary(gss)
+par(mfrow=c(1,3), cex.axis=0.5)
+hist(gss$wordsum)
+counts <- table(gss$class)
+barplot(counts, col=c("darkblue","red", "green", "yellow"), legend = rownames(counts))
+boxplot(gss$wordsum~gss$class)
+
+```
+
+
+```{r question-10}
+inference(y = gss$wordsum, x = gss$class, est = "mean", type = "ht", alternative = "greater", method = "theoretical")
+
+```
+

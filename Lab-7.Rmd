@@ -1,0 +1,152 @@
+---
+title: "Data Analysis and Statistical Interference - Unit 7 (Lab)"
+output: html_document
+---
+
+# Lab Unit 7:
+
+
+```{r loadData}
+load(url("http://www.openintro.org/stat/data/evals.RData"))
+
+```
+
+
+```{r question-3}
+summary(evals$score)
+hist(evals$score)
+evals[evals$score < 3.0,]
+
+```
+
+
+```{r question-4}
+par(mfrow=c(1,2))
+plot(evals$score ~ evals$bty_avg)
+plot(jitter(evals$score) ~ evals$bty_avg)
+
+m_bty <- lm(score ~ bty_avg, data = evals)
+abline(m_bty)
+summary(m_bty)
+
+```
+
+
+```{r question-5}
+plot(m_bty$residuals)
+hist(m_bty$residuals)
+qqnorm(m_bty$residuals)
+qqline(m_bty$residuals)
+
+```
+
+
+```{r question-6}
+par(mfrow=c(1,1))
+plot(evals$bty_avg ~ evals$bty_f1lower)
+cor(evals$bty_avg, evals$bty_f1lower)
+
+plot(evals[,13:19])
+
+m_bty_gen <- lm(score ~ bty_avg + gender, data = evals)
+summary(m_bty_gen)
+
+# Check for condition 1: linear relationship bertween (numerical) x and y
+plot(m_bty_gen$residuals ~ evals$bty_avg)
+
+
+# Check for condition 2: nearly normal residuals with mean 0
+par(mfrow=c(1,2))
+hist(m_bty_gen$residuals)
+qqnorm(m_bty_gen$residuals)
+qqline(m_bty_gen$residuals)
+
+# Check for condition 3: constant variability of residuals
+plot(m_bty_gen$residuals ~ m_bty_gen$fitted)
+plot(abs(m_bty_gen$residuals) ~ m_bty_gen$fitted)
+
+# Check for condition 4: independent residuals
+par(mfrow=c(1,1))
+plot(m_bty_gen$residuals)
+
+
+```
+
+
+```{r quenstion-7}
+multiLines(m_bty_gen)
+
+```
+
+
+```{r question-8}
+m_bty_rnk <- lm(score ~ bty_avg + rank, data = evals)
+summary(m_bty_rnk)
+
+```
+
+
+```{r question-9}
+m_full <- lm(score ~ rank + ethnicity + gender + language + age + cls_perc_eval + cls_students + cls_level + cls_profs + cls_credits + bty_avg, data = evals)
+summary(m_full)
+```
+
+
+```{r question-10}
+
+# Step 1.1: remove 'rank'
+m1 <- lm(score ~ ethnicity + gender + language + age + cls_perc_eval + cls_students + cls_level + cls_profs + cls_credits + bty_avg, data = evals)
+summary(m1)$adj.r.squared
+
+# Step 1.2: remove 'ethnicity'
+m2 <- lm(score ~ rank + gender + language + age + cls_perc_eval + cls_students + cls_level + cls_profs + cls_credits + bty_avg, data = evals)
+summary(m2)$adj.r.squared
+
+# Step 1.3: remove 'gender'
+m3 <- lm(score ~ rank + ethnicity + language + age + cls_perc_eval + cls_students + cls_level + cls_profs + cls_credits + bty_avg, data = evals)
+summary(m3)$adj.r.squared
+
+# Step 1.4: remove 'language'
+m4 <- lm(score ~ rank + ethnicity + gender + age + cls_perc_eval + cls_students + cls_level + cls_profs + cls_credits + bty_avg, data = evals)
+summary(m4)$adj.r.squared
+
+# Step 1.5: remove 'age'
+m5 <- lm(score ~ rank + ethnicity + gender + language + cls_perc_eval + cls_students + cls_level + cls_profs + cls_credits + bty_avg, data = evals)
+summary(m5)$adj.r.squared
+
+# Step 1.6: remove 'age'
+m6 <- lm(score ~ ethnicity + gender + language + age + cls_perc_eval + cls_students + cls_level + cls_profs + cls_credits + bty_avg, data = evals)
+summary(m6)$adj.r.squared
+
+# Step 1.7: remove 'cls_perc_eval'
+m7 <- lm(score ~ ethnicity + gender + language + age + cls_students + cls_level + cls_profs + cls_credits + bty_avg, data = evals)
+summary(m7)$adj.r.squared
+
+# Step 1.8: remove 'cls_students'
+m8 <- lm(score ~ ethnicity + gender + language + age + cls_perc_eval + cls_level + cls_profs + cls_credits + bty_avg, data = evals)
+summary(m8)$adj.r.squared
+
+# Step 1.9: remove 'cls_level'
+m9 <- lm(score ~ ethnicity + gender + language + age + cls_perc_eval + cls_students + cls_profs + cls_credits + bty_avg, data = evals)
+summary(m9)$adj.r.squared
+
+# Step 1.10: remove 'cls_profs'
+m10 <- lm(score ~ ethnicity + gender + language + age + cls_perc_eval + cls_students + cls_level + cls_credits + bty_avg, data = evals)
+summary(m10)$adj.r.squared
+
+# Step 1.11: remove 'cls_credit'
+m11 <- lm(score ~ ethnicity + gender + language + age + cls_perc_eval + cls_students + cls_level + cls_profs + bty_avg, data = evals)
+summary(m11)$adj.r.squared
+
+# Step 1.12: remove 'bty_avg'
+m12 <- lm(score ~ ethnicity + gender + language + age + cls_perc_eval + cls_students + cls_level + cls_profs + cls_credits, data = evals)
+summary(m12)$adj.r.squared
+
+
+# Best model ist m10:
+summary(m10)
+
+```
+
+
+

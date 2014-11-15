@@ -1,0 +1,124 @@
+---
+title: "Data Analysis and Statistical Inference"
+output: html_document
+---
+
+## Exploratory Analysis (project proposal)
+
+<!--
+IAP = Inapplicable
+DK = don't know
+NA = not available
+-->
+
+```{r loadData, echo=FALSE}
+load(url("http://bit.ly/dasi_gss_data"))
+#names(gss)
+
+```
+  
+  
+```{r transformData, echo=FALSE}
+df_data <- gss[gss$year==2012, c("polviews", "richwork", "sex")]
+df_data.clean <- df_data[complete.cases(df_data),]  ## not sure if NA should be excluded. Maybe better to "block" for them?
+
+```
+  
+  
+Contingency table for variables `polviews` and `richwork`:  
+
+```{r echo=FALSE}
+#levels(df_data$polviews)
+#levels(df_data$richwork)
+
+# Contingency table:
+m_con.tab <- table(df_data$polviews, df_data$richwork)
+m_con.tab
+
+```
+  
+  
+Barplot shows the (absolute) frequencies side-by-side:
+
+```{r echo=FALSE}
+library(ggplot2)
+library(scales)
+
+g1 <- ggplot(data=df_data.clean, aes(x=polviews, fill=richwork)) + labs(title="Barplot")
+g1 <- g1 + geom_bar(position=position_dodge()) + theme(legend.position = "top")
+g1 <- g1 + theme(axis.text.x = element_text(size=14, angle = 90, vjust = 0.40)) 
+g1 <- g1 + scale_fill_manual(values=c("darkgreen", "darkred"))
+print(g1)
+
+```
+  
+  
+Segmented barplot shows the (absolute) frequencies stacked on top of each other:  
+
+```{r echo=FALSE}
+g2 <- qplot(x=polviews,
+           data = df_data.clean, 
+           geom="bar", fill=richwork)
+g2 <- g2 + ggtitle("Segmented Barplot")
+g2 <- g2 + theme(legend.position = "top")
+g2 <- g2 + theme(axis.text.x = element_text(size=14, angle = 90, vjust = 0.40)) 
+g2 <- g2 + scale_fill_manual(values=c("darkgreen", "darkred"))
+print(g2)
+
+```
+  
+  
+Contingency table with relative row frequencies:
+
+```{r echo=FALSE}
+m_con.tab.rel <- m_con.tab/rowSums(m_con.tab)  ## calculate relative frequencies per row of contingency matrix
+df_data.freq <- as.data.frame(m_con.tab.rel)  ## convert contingency matrix to data frame (returns also a "Freq" variable)
+names(df_data.freq)[1:2] <- c("polviews", "richwork")
+m_con.tab.rel
+
+```
+  
+  
+Relative frequency segmented barplot shows the percentage per bar:
+
+```{r echo=FALSE}
+g3 <- ggplot(df_data.freq, aes(x=polviews, y=Freq, fill=richwork)) + labs(title="Plot")
+g3 <- g3 + geom_bar(stat="identity") #, colour="white")
+g3 <- g3 + ggtitle("Relative Frequency Segmented Barplot")
+g3 <- g3 + theme(legend.position = "top")
+g3 <- g3 + theme(axis.text.x = element_text(size=14, angle = 90, vjust = 0.40)) 
+g3 <- g3 + scale_y_continuous(labels=percent) ## show tick labels of y-axis as percentage
+g3 <- g3 + scale_fill_manual(values=c("darkgreen", "darkred"))
+print(g3)
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,144 @@
+---
+title: "Data Analysis and Statistical Interference - Unit 3 (Lab)"
+output: html_document
+---
+
+Lab Unit 3A:
+
+```{r loadData}
+load(url("http://www.openintro.org/stat/data/ames.RData"))
+area <- ames$Gr.Liv.Area
+price <- ames$SalePrice
+```
+
+
+```{r exploreData}
+summary(area)
+hist(area)
+```
+
+
+```{r question-1}
+summary(area)[3]
+
+```
+
+
+```{r question-2}
+samp0 <- sample(area, 50)
+samp1 <- sample(area, 50)
+hist(samp0)
+hist(samp1)
+
+mean(samp1)
+```
+
+
+```{r question-3-4}
+sample_means50 <- rep(NA, 5000)  ## 5000 samples of size 50 (init empty vector)
+for (i in 1:5000) {
+  samp <- sample(area, 50)
+  sample_means50[i] <- mean(samp)  ## calculate mean of i-th sample
+}
+hist(sample_means50, breaks = 25)  ## plot distribution of sample means
+
+
+
+```
+
+
+```{r question-5}
+sample_means10 <- rep(NA, 5000)
+sample_means100 <- rep(NA, 5000)
+for (i in 1:5000) {
+  samp <- sample(area, 10)
+  sample_means10[i] <- mean(samp)
+  samp <- sample(area, 100)
+  sample_means100[i] <- mean(samp)
+}
+
+par(mfrow = c(3, 1))
+xlimits = range(sample_means10)
+hist(sample_means10, breaks = 20, xlim = xlimits)
+hist(sample_means50, breaks = 20, xlim = xlimits)
+hist(sample_means100, breaks = 20, xlim = xlimits)
+
+```
+
+
+```{r question-6}
+sample_means50 <- rep(NA, 5000)
+sample_means150 <- rep(NA, 5000)
+for (i in 1:5000) {
+  samp <- sample(price, 50)
+  sample_means50[i] <- mean(samp)
+  samp <- sample(price, 150)
+  sample_means150[i] <- mean(samp)
+}
+
+par(mfrow = c(2, 1))
+xlimits = range(sample_means50)
+hist(sample_means50, breaks = 20, xlim = xlimits)
+hist(sample_means150, breaks = 20, xlim = xlimits)
+
+```
+
+
+Lab Unit 3B:
+
+```{r B-question-1}
+population <- ames$Gr.Liv.Area
+samp <- sample(population, 60)
+hist(samp)
+
+```
+
+
+```{r B-question-2}
+sample_mean <- mean(samp)
+
+se <- sd(samp)/sqrt(60)
+lower <- sample_mean - 1.96 * se
+upper <- sample_mean + 1.96 * se
+c(lower, upper)
+
+```
+
+```{r B-question-4}
+mean(population)
+
+samp_mean <- rep(NA, 50)  ## vector of sample means
+samp_sd <- rep(NA, 50)  ## vector of sample standard deviations
+n <- 60
+for(i in 1:50) {
+  samp <- sample(population, n) # obtain a sample of size n = 60 from the population
+  samp_mean[i] <- mean(samp) # save sample mean in i-th element of samp_mean
+  samp_sd[i] <- sd(samp) # save sample sd in i-th element of samp_sd
+}
+lower <- samp_mean - 1.96 * samp_sd/sqrt(n)  ## vector of CI lower bounds
+upper <- samp_mean + 1.96 * samp_sd/sqrt(n)  ## vector of CI upper bounds
+c(lower[1], upper[1])  ## 1st CI
+plot_ci(lower, upper, mean(population))  ## display all 50 confidence intervals
+
+```
+
+
+```{r B-question-5}
+qnorm(0.995)  ## 99th standard normal quantile
+
+```
+
+
+```{r B-question-6}
+lower99 <- samp_mean - qnorm(0.995) * samp_sd/sqrt(n)  ## vector of CI lower bounds
+upper99 <- samp_mean + qnorm(0.995) * samp_sd/sqrt(n)  ## vector of CI upper bounds
+c(lower99[1], upper99[1])  ## 1st CI
+plot_ci(lower99, upper99, mean(population))  ## display all 50 confidence intervals
+
+```
+
+
+
+
+
+

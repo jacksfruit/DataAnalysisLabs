@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<!-- saved from url=(0123)https://s3.amazonaws.com/coursera-uploads/user-ea68d3511d11c60c55f98ae5/972358/asst-4/ecfb07c0576711e491987fad0db095f5.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="x-ua-compatible" content="IE=9">
+
+<title>Are Internet Use and Civic Engagement Associated</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 9px;
+   margin: 7px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.0em; 
+}
+
+h2 { 
+   font-size:1.6em; 
+}
+
+h3 { 
+   font-size:1.2em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.3em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:8pt; 
+      max-width:90%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 5mm 10mm 10mm 5mm; 
+   }
+     
+   @page :right { 
+      margin: 10mm 5mm 10mm 15mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: rgb(88, 72, 246)
+   }
+
+   pre .number {
+     color: rgb(0, 0, 205);
+   }
+
+   pre .comment {
+     color: rgb(76, 136, 107);
+   }
+
+   pre .keyword {
+     color: rgb(0, 0, 255);
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: rgb(3, 106, 7);
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+</head>
+
+<body>
+<h1>Are Internet Use and Civic Engagement Associated</h1>
+
+<h3><em>Franc Bračun</em></h3>
+
+<h5>17.10.2014</h5>
+
+<!-- For more info on RMarkdown see http://rmarkdown.rstudio.com/ -->
+
+<!-- Enter the code required to load your data in the space below. The data will be loaded but the line of code won't show up in your write up (echo=FALSE) in order to save space-->
+
+<!-- In the remainder of the document, add R code chunks as needed -->
+
+<h3>Introduction:</h3>
+
+<p>This research examines the relationship between Internet use and civic engagement.
+Civic engagement is known to catalyze government reform and participatory democracy (Park and Perry , 2008). 
+Informed and empowered citizens are able to facilitate good governance by making all levels of government 
+more efficient, transparent, and accountable. Internet use and online engagement are expected to provide a
+promising avenue for revitalizing democracy in the digital era. However, relatively little is known about 
+the relationship between Internet use and civic engagement. In this research we will explore the relationship between action-oriented civic engagement and internet use. <em>Action-oriented engagement</em> is going out to do something rather than debating public
+issues. In particular, this research attempts to answer the following <strong>research question</strong>: 
+<em>Is there a relationship between whether U.S. citizens of age 18 or older were exposed to the campaign for President on the Internet and their engagement in voluntary community activities?</em> </p>
+
+<h3>Data:</h3>
+
+<p>This study analyzes nationwide survey data from the American National
+Election Studies (ANES) collected in election year 2012 (<em>The American National Election Studies (ANES; <a href="http://www.electionstudies.org/">www.electionstudies.org</a>). The ANES 2012 Time Series Study [dataset]. Stanford University and the University of Michigan [producers]</em>). 
+A survey of voters in the United States has been conducted before and after 2012 presidential election.  </p>
+
+<h4><em>Data collection</em></h4>
+
+<p><strong>Data collection</strong> was conducted in the two modes (i.e.., face-to-face and Internet) independently, using separate samples. Face-to-face mode is address-based sample with in-person recruitment and interviews. Internet mode is primarily address-based sample and mail recruitment, and Internet interviews. While face-to-face (FTF) respondents were administered the single pre-election interview and single post-election interview traditional to Time Series presidential-election-year studies, for the internet sample the same questions were administered over a total of 4 shorter online interviews, 2 pre-election and 2 post-election. Web-administered cases constituted a representative sample separate from the face-to-face sample and were drawn from panel members of GfK Knowledge Networks.</p>
+
+<h4><em>Units of observation</em></h4>
+
+<p><strong>Cases</strong> (i.e., units of observation) are individuals, i.e. voters in US (U.S. citizens age 18 or older). Number of respondents before 2012 presidential election was 5,914  (2,054 face-to-face and 3,860 online), and the number of respondents after 2012 presidential election was 5,510 (1,929 face-to-face and 3,581 online). <strong>The data set</strong> (<a href="http://bit.ly/dasi_anes_data">http://bit.ly/dasi_anes_data</a>) was extracted from the cumulative data file of ANES 2012.  </p>
+
+<h4><em>Study variables</em></h4>
+
+<p>This study will examine  <strong>the association between two categorical variables</strong> (each with only 2 levels). Dependent and independent variables are summarized in Table 1.</p>
+
+<p><strong>Table 1</strong>: Variables we will be studying  </p>
+
+<table><thead>
+<tr>
+<th>Meaning</th>
+<th>Independent variable</th>
+<th>Dependent variable</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>========================</td>
+<td>==============================================</td>
+<td>==========================================</td>
+</tr>
+<tr>
+<td>Variable name</td>
+<td>mediapo_net</td>
+<td>involv_voltr</td>
+</tr>
+<tr>
+<td>________________________</td>
+<td>______________________________________________</td>
+<td>__________________________________________</td>
+</tr>
+<tr>
+<td>Variable type</td>
+<td>Regular (unordered) categorical variable.</td>
+<td>Regular (unordered) categorical variable.</td>
+</tr>
+<tr>
+<td>________________________</td>
+<td>______________________________________________</td>
+<td>__________________________________________</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Post media exposure and attention via Internet</td>
+<td>Community involvement</td>
+</tr>
+<tr>
+<td>________________________</td>
+<td>______________________________________________</td>
+<td>__________________________________________</td>
+</tr>
+<tr>
+<td>Question</td>
+<td>Did you read, watch, or listen</td>
+<td>Many people say they have less time</td>
+</tr>
+<tr>
+<td></td>
+<td>to any information about the campaign</td>
+<td>these days to do volunteer work.</td>
+</tr>
+<tr>
+<td></td>
+<td>for President on the Internet?</td>
+<td>What about you, were you able to devote</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>any time to volunteer work</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>in the last 12 months or did you not do so?</td>
+</tr>
+<tr>
+<td>________________________</td>
+<td>______________________________________________</td>
+<td>__________________________________________</td>
+</tr>
+<tr>
+<td>VALUE</td>
+<td>LABEL</td>
+<td>LABEL</td>
+</tr>
+<tr>
+<td>……………………</td>
+<td>……………………………………….</td>
+<td>………………………….</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>2</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>========================</td>
+<td>==============================================</td>
+<td>===========================================</td>
+</tr>
+</tbody></table>
+
+<p>Labels “Refused”, “Don't know”, “Deleted due to partial interview”, “Not asked, unit nonresponse”, “Error”,“Restricted access”, and “Inapplicable” are marked as missing values (NA).</p>
+
+<h4><em>The type of study</em></h4>
+
+<p>This is <strong>retrospective observational study</strong>. Namely, data are collected only by monitoring what occurs and <em>does not directly interfere with how the data arise</em>, therefore this is observational study. And since we use past data in our study (we do not collect data) this is retrospective observational study.</p>
+
+<h4><em>Scope of inference - generalizability</em></h4>
+
+<p>The <strong>population of interest</strong> is U.S. citizens of age 18 or older. The <strong>findings from this analysis can be generalized to the population of interest</strong>, since (1) in the face-to-face interviews the population of interest was divided into strata (<strong>stratifed sampling</strong>), and then a <strong>multi-stage cluster sampling</strong> was employed within each stratum, and (2) in the Web-administered cases  <strong>simple random sampling</strong> was employed (see ANES 2013).</p>
+
+<p>The act of taking the above mentioned sampling methods helps minimize bias, however, bias can crop up in other ways. ANES estimates of voting turnout have been consistently higher than rates reported in aggregate voting returns. Part of this discrepancy is probably due to respondent misreport, which can lead to biased statistical estimation results. ANES has sought to correct this potential bias by independently validating voter turnout. Another common downfall in surveys is if the non-response is high. If only 30% of the people randomly sampled for a survey actually respond, then it is unclear whether the results are representative of the entire population. This non-response bias can skew results. The ANES response rates usually are in the neighborhood of 72%, i.e. non-response rate is less than 30%. However, since the non-response rate is close to 30% caution must be exercised. Therefore we will use weighting <strong>to correct skewness in our samples that are meant to represent a population of interest</strong>. In ANES data set each weight accounts for the probability of household selection, the probability of respondent selection within the household, nonresponse, and random sampling error. Since we combine face-to-face and internet sample, and <em>we want to achieve generalizibility of the 2012 Time Series data as a representative cross-section</em>, it is necessary to use  use weighting. To assign different weights to the different cases in the analysis data we will use “weight_full” weight from ANES data set (i.e., Post-Stratification Weight for the full sample) (see ANES, 2013, pp. 32-37).</p>
+
+<h4><em>Scope of inference - causality</em></h4>
+
+<p>These data <strong>can not be used to establish causal links</strong> between the variables of interest since this is an observational study. Namely, to establish causal connections one have to randomly assign subjects to treatments. This can be done only in experimental study, not in observational study.</p>
+
+<h3>Exploratory data analysis:</h3>
+
+<h4><em>Preperring data</em></h4>
+
+<p>First, (in the code chunk below) data relevant to the analysis task are retrieved from the “anes” data set. </p>
+
+<pre><code class="r"><span class="comment"># Limit the data.frame to only the variables needed</span>
+
+<span class="identifier">myData</span> <span class="operator">&lt;-</span> <span class="identifier">data.frame</span><span class="paren">(</span><span class="identifier">caseid</span><span class="operator">=</span><span class="identifier">anes</span><span class="operator">$</span><span class="identifier">caseid</span>,                    <span class="comment"># unique record identifiers</span>
+                     <span class="identifier">sampleWeight</span><span class="operator">=</span><span class="identifier">anes</span><span class="operator">$</span><span class="identifier">weight_full</span>,         <span class="comment"># full-sample weights</span>
+                     <span class="identifier">netExposure</span><span class="operator">=</span><span class="identifier">anes</span><span class="operator">$</span><span class="identifier">mediapo_net</span>,          <span class="comment"># internet exposure and attention</span>
+                     <span class="identifier">commuInvolvment</span> <span class="operator">=</span> <span class="identifier">anes</span><span class="operator">$</span><span class="identifier">involv_voltr</span><span class="paren">)</span>   <span class="comment"># Community involvement</span>
+<span class="identifier">names</span><span class="paren">(</span><span class="identifier">myData</span><span class="paren">)</span>
+</code></pre>
+
+<pre><code>## [1] "caseid"          "sampleWeight"    "netExposure"     "commuInvolvment"
+</code></pre>
+
+<pre><code class="r"><span class="identifier">dim</span><span class="paren">(</span><span class="identifier">myData</span><span class="paren">)</span>
+</code></pre>
+
+<pre><code>## [1] 5914    4
+</code></pre>
+
+<p>There is 5914 cases with 4 variables in data set. The variable “<code>caseid</code>” is an unique identifier of each respondent. With the aim to simplify the analysis I named variables with more descriptive terms, namely:  </p>
+
+<ol>
+<li>I have replaced a term “<code>mediapo_net</code>” with “<code>netExposure</code>” to describe the “Internet Exposure”.</li>
+<li>I have replaced a term “<code>involv_voltr</code>” with “<code>commuInvolvment</code>” to describe the “Community Engagement”.</li>
+<li>I have replaced a term “<code>weight_full</code>” with “<code>sampleWeight</code>” to describe the “Post-Stratification Weight for the full sample”.</li>
+</ol>
+
+<pre><code class="r"><span class="identifier">summary</span><span class="paren">(</span><span class="identifier">myData</span><span class="paren">)</span>
+</code></pre>
+
+<pre><code>##      caseid      sampleWeight   netExposure commuInvolvment
+##  Min.   :   1   Min.   :0.021   Yes :3090   Yes :2448      
+##  1st Qu.:1480   1st Qu.:0.350   No  :2418   No  :3056      
+##  Median :3904   Median :0.713   NA's: 406   NA's: 410      
+##  Mean   :3576   Mean   :1.000                              
+##  3rd Qu.:5383   3rd Qu.:1.379                              
+##  Max.   :6864   Max.   :4.991
+</code></pre>
+
+<p>As can be seen from the summary statistics above, there are rows with missing data (i.e., NA's): 406 (6.9%) NA's for “Internet Exposure”, and  410 (6.9%) for “Community Engagement”. Since the percentage of missing data is less than 10% it is appropriate to remove cases with missing data. Therefore we are subsetting data frame to find and remove rows with missing data. </p>
+
+<pre><code class="r"><span class="comment"># remove cases in whic either of two study variables is NA</span>
+<span class="identifier">anesData</span> <span class="operator">&lt;-</span> <span class="identifier">subset</span><span class="paren">(</span><span class="identifier">myData</span>, <span class="paren">(</span><span class="identifier">netExposure</span> <span class="operator">!=</span> <span class="identifier">is.na</span><span class="paren">(</span><span class="identifier">myData</span><span class="operator">$</span><span class="identifier">netExposure</span><span class="paren">)</span> <span class="operator">&amp;</span> <span class="paren">(</span><span class="identifier">commuInvolvment</span> <span class="operator">!=</span> <span class="identifier">is.na</span><span class="paren">(</span><span class="identifier">myData</span><span class="operator">$</span><span class="identifier">commuInvolvment</span><span class="paren">)</span><span class="paren">)</span><span class="paren">)</span><span class="paren">)</span>
+<span class="identifier">summary</span><span class="paren">(</span><span class="identifier">anesData</span><span class="paren">)</span>
+</code></pre>
+
+<pre><code>##      caseid      sampleWeight   netExposure commuInvolvment
+##  Min.   :   2   Min.   :0.021   Yes:3086    Yes:2447       
+##  1st Qu.:1470   1st Qu.:0.349   No :2416    No :3055       
+##  Median :3886   Median :0.705                              
+##  Mean   :3559   Mean   :0.999                              
+##  3rd Qu.:5361   3rd Qu.:1.377                              
+##  Max.   :6864   Max.   :4.991
+</code></pre>
+
+<pre><code class="r"><span class="identifier">dim</span><span class="paren">(</span><span class="identifier">anesData</span><span class="paren">)</span>
+</code></pre>
+
+<pre><code>## [1] 5502    4
+</code></pre>
+
+<p>After eliminating cases with missing data, there is 5502 cases in data set.</p>
+
+<h4><em>Summary statistics</em></h4>
+
+<p>As discussed above in <em>Scope of inference - generalizability</em> section the unweighted frequencies tell us something about our samples only (i.e., respondents), however, if we want to generalize and say something about the population of interest (i.e., the U.S. citizens of age 18 or older), we must use the weighted frequencies (see ANES, 2013, pp. 32-37). Therefore, we will assign different weights to the different cases in the data set by using “<code>sampleWeight</code>” from ANES data set. Contingency table below summarizes variables “<code>netExposure</code>” and “<code>commuInvolvment</code>” for weighted cases together with row proportions (the upper number in a cell represents the frequency and the lower represents the proportion).</p>
+
+<pre><code class="r"><span class="keyword">library</span><span class="paren">(</span><span class="identifier">descr</span><span class="paren">)</span>
+<span class="keyword">library</span><span class="paren">(</span><span class="identifier">xtable</span><span class="paren">)</span>
+<span class="comment"># Weighted table</span>
+<span class="identifier">wTable</span> <span class="operator">&lt;-</span> <span class="identifier">with</span><span class="paren">(</span><span class="identifier">anesData</span>, <span class="identifier">crosstab</span><span class="paren">(</span><span class="identifier">x</span><span class="operator">=</span><span class="identifier">netExposure</span>, 
+                                  <span class="identifier">y</span><span class="operator">=</span><span class="identifier">commuInvolvment</span>, 
+                                  <span class="identifier">weight</span><span class="operator">=</span><span class="identifier">sampleWeight</span>,            <span class="comment"># Weights for cases</span>
+                                  <span class="identifier">xlab</span> <span class="operator">=</span> <span class="string">"Internet Exposure"</span>, 
+                                  <span class="identifier">ylab</span> <span class="operator">=</span> <span class="string">"Community Engagement"</span>, 
+                                  <span class="identifier">prop.r</span> <span class="operator">=</span> <span class="literal">TRUE</span>, <span class="identifier">digits</span><span class="operator">=</span><span class="number">1</span>,
+                                  <span class="identifier">expected</span> <span class="operator">=</span> <span class="literal">FALSE</span>, <span class="identifier">plot</span> <span class="operator">=</span> <span class="literal">FALSE</span>,
+                                  <span class="identifier">format</span><span class="operator">=</span><span class="string">"SPSS"</span><span class="paren">)</span><span class="paren">)</span>
+<span class="identifier">wTable</span>
+</code></pre>
+
+<pre><code>##    Cell Contents 
+## |-------------------------|
+## |                   Count | 
+## |             Row Percent | 
+## |-------------------------|
+## 
+## ==================================
+##                commuInvolvment
+## netExposure     Yes     No   Total
+## ----------------------------------
+## Yes            1475   1553    3028
+##                48.7   51.3    55.1
+## ----------------------------------
+## No              908   1560    2468
+##                36.8   63.2    44.9
+## ----------------------------------
+## Total          2383   3113    5496
+## ==================================
+</code></pre>
+
+<p>Note that due to weighting there is now less cases in weighted contingency table then in the original data set above, 5496 compared to 5502 respectively. The results shows that the proportion of voters engaged in community activities in the sample that <em>has been exposed</em> to the campaign for President on the Internet is 48.7%. This rate of community engagement is  higher compared to the proportion of voters engaged in community activities in the sample that <em>has not been exposed</em> to the campaign for President on the Internet (36.8%). </p>
+
+<p>Below is a relative frequency segmented bar plot for Community Engagement and Internet Exposure showing these differences more clearly.</p>
+
+<pre><code class="r"><span class="identifier">barplot</span><span class="paren">(</span><span class="identifier">t</span><span class="paren">(</span><span class="identifier">wTable</span><span class="operator">$</span><span class="identifier">prop.row</span><span class="paren">)</span>, <span class="identifier">main</span><span class="operator">=</span><span class="string">"Relative frequency segmented bar plot for Community Engagement and Internet Exposure"</span>,
+        <span class="identifier">cex.main</span> <span class="operator">=</span> <span class="number">0.85</span>,
+        <span class="identifier">xlab</span><span class="operator">=</span><span class="string">"Internet Exposure"</span>, <span class="identifier">col</span><span class="operator">=</span><span class="identifier">c</span><span class="paren">(</span><span class="string">"orange2"</span>,<span class="string">"dodgerblue"</span><span class="paren">)</span>,
+        <span class="identifier">xlim</span> <span class="operator">=</span> <span class="identifier">c</span><span class="paren">(</span><span class="number">0</span>,<span class="number">20</span><span class="paren">)</span>, <span class="comment"># these two lines allow space for the legend</span>
+        <span class="identifier">width</span> <span class="operator">=</span> <span class="number">6.3</span>,
+        <span class="identifier">legend</span> <span class="operator">=</span> <span class="identifier">rownames</span><span class="paren">(</span><span class="identifier">wTable</span><span class="operator">$</span><span class="identifier">prop.row</span><span class="paren">)</span>,
+        <span class="identifier">args.legend</span> <span class="operator">=</span> <span class="identifier">list</span><span class="paren">(</span><span class="identifier">x</span> <span class="operator">=</span> <span class="string">"topright"</span>, <span class="identifier">title</span><span class="operator">=</span><span class="string">"Community Engagement"</span>, <span class="identifier">horiz</span><span class="operator">=</span><span class="literal">TRUE</span>, <span class="identifier">xjust</span><span class="operator">=</span><span class="number">0</span><span class="paren">)</span><span class="paren">)</span> 
+<span class="identifier">y_yes</span> <span class="operator">&lt;-</span> <span class="identifier">round</span><span class="paren">(</span><span class="identifier">wTable</span><span class="operator">$</span><span class="identifier">prop.row</span><span class="paren">[</span><span class="number">1</span>,<span class="number">1</span><span class="paren">]</span><span class="operator">*</span><span class="number">100</span>,<span class="number">1</span><span class="paren">)</span>
+<span class="identifier">y_no</span> <span class="operator">&lt;-</span> <span class="identifier">round</span><span class="paren">(</span><span class="identifier">wTable</span><span class="operator">$</span><span class="identifier">prop.row</span><span class="paren">[</span><span class="number">2</span>,<span class="number">1</span><span class="paren">]</span><span class="operator">*</span><span class="number">100</span>,<span class="number">1</span><span class="paren">)</span>
+<span class="identifier">text</span><span class="paren">(</span><span class="identifier">x</span> <span class="operator">=</span> <span class="number">4.5</span>, <span class="identifier">y</span> <span class="operator">=</span> <span class="number">0.45</span>, <span class="identifier">labels</span> <span class="operator">=</span> <span class="identifier">paste0</span><span class="paren">(</span><span class="identifier">y_yes</span>, <span class="string">" %"</span><span class="paren">)</span>, <span class="identifier">cex</span><span class="operator">=</span><span class="number">0.9</span>, <span class="identifier">col</span><span class="operator">=</span><span class="number">1</span><span class="paren">)</span>
+<span class="identifier">text</span><span class="paren">(</span><span class="identifier">x</span> <span class="operator">=</span> <span class="number">12</span>, <span class="identifier">y</span> <span class="operator">=</span> <span class="number">0.33</span>, <span class="identifier">labels</span> <span class="operator">=</span> <span class="identifier">paste0</span><span class="paren">(</span><span class="identifier">y_no</span>,<span class="string">" %"</span><span class="paren">)</span>, <span class="identifier">cex</span><span class="operator">=</span><span class="number">0.9</span>, <span class="identifier">col</span><span class="operator">=</span><span class="number">1</span><span class="paren">)</span>
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAGwCAMAAABy/YdMAAABNVBMVEX9/v0AAAAAADkAAGUAAGYAIJAAIgAAOTkAOWUAOY8AOrYAPQAAZmUAZo8AZrUGAAAGAGYGIJAGUdsNAAANADoNAGYNZv8RIAARIDoRUWYRfP8VOgAVkP8bUTobkP8ekP8fZmYffJAfkLYfkNs1AAA1IgA1VwA5AAA5ADk5AGU5OQA5OTk5OWU5OY85ZrU5j485j9pfAABfPQBfVwBfbgBlAABlADllAGVlOQBlOTllOY9lZgBlZjllZmVltdpltf2GIgCGhACPOQCPOTmPOWWPZgCPjzmPj2WPtY+P27WP29qP2/2qPQCqmgC1ZgC1Zjm1tWW124+12/21/rW1/tq1/v3NVwDNhADNmgDajzna24/a/rXa/tra/v3ubgDuhADumgD9tWX924/927X9/rX9/tr9/v3cuGepAAAAZ3RSTlP///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8AFBa6eAAAAAlwSFlzAAALEgAACxIB0t1+/AAAEbBJREFUeJztnYt/29QBhadkPEqHtzE2GDDCKCQNW4fZmpaVMZd0jA4Hw8bS4UHa2HP8//8Juy89nMiKH5LOse/5fm1sy3oc6dO9V7alqx9NRZT8CB1AYJD4SJH4SJH4SJH4SJH4SJH4SJH4SJH4SJH4SJH4SJH4SJH4SJH4SJH4SJH4SJH4SJH4SJH4SJH4SJH4SJH4SJH4SJH4SJH4SJH4SFlW/Cgx3DjzL8a3+2Hw1/38ecbkKOmul24uX+cLmxz1bK7d0/IxixnLMo0PkgVT2jnly7XTJUlvmdApX1/ZUulaXAo7d+I1Fp6ytHizgX3IaSHnaKcsZ8m+UBPF5S0q3k9zOdP4oOf+L73c1VeudGNdEl++Qafz1mIFVhFvN9TAlhOzfFOCkhs/HCc7j2/3B+69rn9vOr0wQ79Ikt1T99q8euGgZya3q+iGjHY/MW9Oh0nSuTg2U3X8NIl5LEwx3PkgefnYVjL5RP82c+4XxnEb5AMzjktzNrILTQfZbTRwizDTuEx2ys40jDQMtZcbli0re+Lz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" alt="plot of chunk unnamed-chunk-6"> </p>
+
+<p>The exploratory data analysis suggests that exposition to the Internet campaign for President (i.e., “<code>netExposure</code>” variable) and  engagement in voluntary community activities (i.e., “<code>commuInvolvment</code>” variable) are associated (dependent). Namely, voters who have been exposed to the internet campaign for President are about 32.4% more likely to engage in voluntary community activities than non-exposed voters. However, to make any definitive conclusions about the association between <em>engagement in voluntary community activities</em> and <em>exposition to the Internet campaign for President</em>, we have to perform hypothesis tests for comparing two proportions and estimate the difference between two proportions. We will do this in next section.</p>
+
+<h3>Inference:</h3>
+
+<h5>Hypotheses</h5>
+
+<p>We want to determine if the ANES 2012 Time Series Study data set provides strong evidence that the U.S. citizens of age 18 or older who have been exposed to the Internet campaign for President are more likely to engage in voluntary community activities than those who have not been exposed to the Internet campaign for President, versus the other possibility that there is no difference. Our two competing hypotheses are:</p>
+
+<p><var>H</var><sub>0</sub>: There is no difference in community engagement proportions between the U.S. citizens of age 18 or older who have been exposed to the Internet campaign for President and those who have not been exposed to the Internet campaign for President. (<var>p</var><sub>exposed</sub> - <var>p</var><sub>not-exposed</sub> = 0) </p>
+
+<p><var>H</var><sub>A</sub>: Community engagement proportion of the U.S. citizens of age 18 or older who <em>have been exposed</em> to the Internet campaign for President <em>is higher</em> than community engagement proportion of those who <em>have not been exposed</em> to the Internet campaign for President. (<var>p</var><sub>exposed</sub> - <var>p</var><sub>not-exposed</sub> &gt; 0)</p>
+
+<h5>Conditions verification</h5>
+
+<p>First, in the code chunk below, we prepare necessary variables for performing conditions check and inference.</p>
+
+<pre><code class="r"><span class="identifier">n_invExposed</span> <span class="operator">&lt;-</span> <span class="identifier">wTable</span><span class="operator">$</span><span class="identifier">t</span><span class="paren">[</span><span class="number">1</span>,<span class="number">1</span><span class="paren">]</span> <span class="comment"># Number of community involved  voters that have been exposed to the Internet campaign </span>
+<span class="identifier">n_invNotExposed</span> <span class="operator">&lt;-</span> <span class="identifier">wTable</span><span class="operator">$</span><span class="identifier">t</span><span class="paren">[</span><span class="number">2</span>,<span class="number">1</span><span class="paren">]</span> <span class="comment"># Number of community involved voters that have not been exposed to the Internet campaign  </span>
+<span class="identifier">nExposed</span> <span class="operator">&lt;-</span> <span class="identifier">wTable</span><span class="operator">$</span><span class="identifier">t</span><span class="paren">[</span><span class="number">1</span>,<span class="number">1</span><span class="paren">]</span> <span class="operator">+</span> <span class="identifier">wTable</span><span class="operator">$</span><span class="identifier">t</span><span class="paren">[</span><span class="number">1</span>,<span class="number">2</span><span class="paren">]</span> <span class="comment"># Number of exposed voters</span>
+<span class="identifier">nNotExposed</span> <span class="operator">&lt;-</span> <span class="identifier">wTable</span><span class="operator">$</span><span class="identifier">t</span><span class="paren">[</span><span class="number">2</span>,<span class="number">1</span><span class="paren">]</span> <span class="operator">+</span> <span class="identifier">wTable</span><span class="operator">$</span><span class="identifier">t</span><span class="paren">[</span><span class="number">2</span>,<span class="number">2</span><span class="paren">]</span> <span class="comment"># Number of not exposed voters</span>
+<span class="identifier">p_Exposed</span> <span class="operator">&lt;-</span> <span class="identifier">wTable</span><span class="operator">$</span><span class="identifier">prop.row</span><span class="paren">[</span><span class="number">1</span>,<span class="number">1</span><span class="paren">]</span> <span class="comment"># Proportion of involved for exposed sample</span>
+<span class="identifier">p_NotExposed</span> <span class="operator">&lt;-</span>  <span class="identifier">wTable</span><span class="operator">$</span><span class="identifier">prop.row</span><span class="paren">[</span><span class="number">2</span>,<span class="number">1</span><span class="paren">]</span> <span class="comment"># Proportion of involved for not esposed sample</span>
+<span class="identifier">p_pointEstimate</span> <span class="operator">&lt;-</span> <span class="identifier">p_Exposed</span><span class="operator">-</span> <span class="identifier">p_NotExposed</span> <span class="comment"># Point estimate of the difference between two proportions</span>
+<span class="identifier">p_pooled</span> <span class="operator">&lt;-</span> <span class="paren">(</span><span class="identifier">n_invExposed</span><span class="operator">+</span><span class="identifier">n_invNotExposed</span><span class="paren">)</span><span class="operator">/</span><span class="paren">(</span><span class="identifier">nExposed</span><span class="operator">+</span><span class="identifier">nNotExposed</span><span class="paren">)</span> <span class="comment"># Pooled estimate of the sample proportion</span>
+<span class="identifier">data</span> <span class="operator">&lt;-</span> <span class="identifier">c</span><span class="paren">(</span><span class="identifier">paste0</span><span class="paren">(</span><span class="string">"                nExposed = "</span>,<span class="identifier">round</span><span class="paren">(</span><span class="identifier">nExposed</span>,<span class="number">2</span><span class="paren">)</span>,<span class="string">"  ... Number of exposed voters\n"</span><span class="paren">)</span>,
+          <span class="identifier">paste0</span><span class="paren">(</span><span class="string">"            nNotExposed = "</span>,<span class="identifier">round</span><span class="paren">(</span><span class="identifier">nNotExposed</span>,<span class="number">2</span><span class="paren">)</span>,<span class="string">"  ... Number of not exposed voters\n"</span><span class="paren">)</span>,
+          <span class="identifier">paste0</span><span class="paren">(</span><span class="string">"p_Exposed- p_NotExposed = "</span>,<span class="identifier">round</span><span class="paren">(</span><span class="identifier">p_pointEstimate</span>,<span class="number">2</span><span class="paren">)</span>,<span class="string">"  ... Point estimate\n"</span><span class="paren">)</span>,
+          <span class="identifier">paste0</span><span class="paren">(</span><span class="string">"               p_pooled = "</span>,<span class="identifier">round</span><span class="paren">(</span><span class="identifier">p_pooled</span>,<span class="number">2</span><span class="paren">)</span><span class="paren">)</span>,<span class="string">" ... Pooled estimate\n"</span><span class="paren">)</span>
+
+<span class="identifier">cat</span><span class="paren">(</span><span class="identifier">data</span><span class="paren">)</span>
+</code></pre>
+
+<pre><code>##                 nExposed = 3028  ... Number of exposed voters
+##              nNotExposed = 2468  ... Number of not exposed voters
+##  p_Exposed- p_NotExposed = 0.12  ... Point estimate
+##                 p_pooled = 0.43  ... Pooled estimate
+</code></pre>
+
+<p>Because each group (i.e., exposed group and not exposed group) is a random sample from less than 10% of U.S. citizens of age 18 or older, ( <var>n</var><sub>exposed</sub> = 3028 &gt; 10 and <var>n</var><sub>not-exposed</sub> = 2468 &gt; 10 ), the observations are independent within each group. Since appropriate sampling methods were used in ANES 2012 (see also section <em>Scope of inference - generalizability</em>) there is no reason to expect that the exposed and not exposed group are dependent, and we can conclude that the observations are independent also between the two groups too. Therefore, <strong>the independence condition for inference holds</strong>. </p>
+
+<p>To check success-failure condition for hypothesis testing for comparing two proportions, we have to use the pooled estimate of the sample proportion. As shown in the excerpt below values for successes and failures for both groups are much higher than 10. Therefore, <strong>success-failure condition for hypothesis test also holds.</strong> </p>
+
+<pre><code class="r"><span class="identifier">exposed_successes</span> <span class="operator">&lt;-</span> <span class="identifier">nExposed</span><span class="operator">*</span><span class="identifier">p_pooled</span>; <span class="identifier">exposed_failures</span> <span class="operator">&lt;-</span> <span class="identifier">nExposed</span><span class="operator">*</span><span class="paren">(</span><span class="number">1</span><span class="operator">-</span><span class="identifier">p_pooled</span><span class="paren">)</span> 
+<span class="identifier">non_exposed_successes</span> <span class="operator">&lt;-</span> <span class="identifier">nNotExposed</span><span class="operator">*</span><span class="identifier">p_pooled</span>; <span class="identifier">non_exposed_failures</span> <span class="operator">&lt;-</span> <span class="identifier">nNotExposed</span><span class="operator">*</span><span class="paren">(</span><span class="number">1</span><span class="operator">-</span><span class="identifier">p_pooled</span><span class="paren">)</span>
+<span class="identifier">data</span> <span class="operator">&lt;-</span> <span class="identifier">c</span><span class="paren">(</span><span class="identifier">paste0</span><span class="paren">(</span><span class="string">"     exposed_successes = "</span>,<span class="identifier">round</span><span class="paren">(</span><span class="identifier">exposed_successes</span><span class="paren">)</span>,<span class="string">"      "</span><span class="paren">)</span>,
+          <span class="identifier">paste0</span><span class="paren">(</span><span class="string">"        exposed_failures = "</span>,<span class="identifier">round</span><span class="paren">(</span><span class="identifier">exposed_failures</span><span class="paren">)</span>,<span class="string">"  \n"</span><span class="paren">)</span>,
+          <span class="identifier">paste0</span><span class="paren">(</span><span class="string">"non_exposed_successes = "</span>,<span class="identifier">round</span><span class="paren">(</span><span class="identifier">non_exposed_successes</span><span class="paren">)</span>,<span class="string">"  "</span><span class="paren">)</span>,
+          <span class="identifier">paste0</span><span class="paren">(</span><span class="string">"        non_exposed_failures = "</span>,<span class="identifier">round</span><span class="paren">(</span><span class="identifier">non_exposed_failures</span><span class="paren">)</span><span class="paren">)</span>,<span class="string">" \n"</span><span class="paren">)</span>
+<span class="identifier">cat</span><span class="paren">(</span><span class="identifier">data</span><span class="paren">)</span>
+</code></pre>
+
+<pre><code>##      exposed_successes = 1313               exposed_failures = 1715  
+##  non_exposed_successes = 1070           non_exposed_failures = 1398
+</code></pre>
+
+<p>So, <strong>the necessary conditions for</strong> the sampling distribution of the difference between two proportions <strong>being nearly normal are met</strong>.</p>
+
+<h5>Used method</h5>
+
+<p>Since the parameter of interest in our study is the difference between two proportions and the conditions for nearly normal sampling distribution are met, we will use <strong>theoretical based method</strong> for hypothesis test and confidence interval for two two-level categorical variables.</p>
+
+<p>By this method we would like to make conclusions about the difference in two population proportions. We first identify a reasonable point estimate  (<var>p^ </var> <sub>exposed</sub> - <var>p^ </var> <sub>not-exposed</sub>) of population parameter (<var>p</var><sub>exposed</sub> - <var>p</var><sub>not-exposed</sub>). Next, we verify that the point estimate follows the normal model by checking normality and success-failure conditions (already done above). Finally, we compute the estimate's standard error and apply <em>the normal model for Z test statistic</em>. In the setting of confidence intervals, the sample proportions are used to verify the success-failure condition and also compute standard error. In a hypothesis test, the distribution of the test statistic is always examined as though the null hypothesis (<var>p</var><sub>exposed</sub> - <var>p</var><sub>not-exposed</sub> = 0) is true, the standard error formula should reflect this equality in the null hypothesis. However, we don't know the population rate, <em>p</em>, but we can obtain a good estimate of it by <em>pooling</em> the results of both samples. This is called the pooled estimate of the sample proportion, and we use it to compute the standard error when the null hypothesis is that <var>p</var><sub>exposed</sub> = <var>p</var><sub>not-exposed</sub> (e.g., <var>p</var><sub>exposed</sub> - <var>p</var><sub>not-exposed</sub> = 0 ). We also use the pooled estimate of the sample proportion to verify the success-failure condition for a hypothesis test.</p>
+
+<h5>Hypothesis test</h5>
+
+<p>The Z test statistic, the pooled standard error and p-value for <em>one-tiled</em> hypothesis test are calculated in the code chunk below.</p>
+
+<pre><code class="r"><span class="comment">## Hypothesis test for comparing two proportions</span>
+<span class="identifier">SE_pooled</span> <span class="operator">&lt;-</span> <span class="identifier">sqrt</span><span class="paren">(</span><span class="identifier">p_pooled</span><span class="operator">*</span><span class="paren">(</span><span class="number">1</span><span class="operator">-</span><span class="identifier">p_pooled</span><span class="paren">)</span><span class="operator">/</span><span class="identifier">nExposed</span> <span class="operator">+</span><span class="identifier">p_pooled</span><span class="operator">*</span><span class="paren">(</span><span class="number">1</span><span class="operator">-</span><span class="identifier">p_pooled</span><span class="paren">)</span><span class="operator">/</span><span class="identifier">nNotExposed</span><span class="paren">)</span>  <span class="comment"># Standard error with pooled proportion</span>
+<span class="identifier">z_statistics</span> <span class="operator">&lt;-</span> <span class="paren">(</span><span class="identifier">p_pointEstimate</span> <span class="operator">-</span> <span class="number">0</span><span class="paren">)</span><span class="operator">/</span><span class="identifier">SE_pooled</span> <span class="comment"># Z statistics for normal distribution</span>
+<span class="identifier">p_value</span> <span class="operator">&lt;-</span> <span class="identifier">pnorm</span><span class="paren">(</span><span class="identifier">q</span><span class="operator">=</span><span class="identifier">z_statistics</span>, <span class="identifier">mean</span><span class="operator">=</span><span class="number">0</span>, <span class="identifier">sd</span><span class="operator">=</span><span class="identifier">SE_pooled</span>, <span class="identifier">lower.tail</span><span class="operator">=</span><span class="literal">FALSE</span><span class="paren">)</span><span class="comment"># p-value for one-tailed hypothesis test</span>
+<span class="identifier">data</span> <span class="operator">&lt;-</span> <span class="identifier">c</span><span class="paren">(</span><span class="identifier">paste0</span><span class="paren">(</span><span class="string">"      SE_pooled = "</span>,<span class="identifier">round</span><span class="paren">(</span><span class="identifier">SE_pooled</span>,<span class="number">3</span><span class="paren">)</span>,<span class="string">"  ... the pooled standard error\n"</span><span class="paren">)</span>,
+          <span class="identifier">paste0</span><span class="paren">(</span><span class="string">"  z_statistics = "</span>,<span class="identifier">round</span><span class="paren">(</span><span class="identifier">z_statistics</span>,<span class="number">3</span><span class="paren">)</span>,<span class="string">"   ... the Z test statistic\n"</span><span class="paren">)</span>,
+          <span class="identifier">paste0</span><span class="paren">(</span><span class="string">"       p_value ~ "</span>,<span class="identifier">round</span><span class="paren">(</span><span class="identifier">p_value</span>,<span class="number">2</span><span class="paren">)</span>,<span class="string">"      ... p-value\n"</span><span class="paren">)</span><span class="paren">)</span>
+<span class="identifier">cat</span><span class="paren">(</span><span class="identifier">data</span><span class="paren">)</span>
+</code></pre>
+
+<pre><code>##       SE_pooled = 0.013  ... the pooled standard error
+##    z_statistics = 8.87   ... the Z test statistic
+##         p_value ~ 0      ... p-value
+</code></pre>
+
+<pre><code class="r"><span class="identifier">xseq</span><span class="operator">&lt;-</span><span class="identifier">seq</span><span class="paren">(</span><span class="operator">-</span><span class="number">0.18</span>,<span class="number">0.18</span>,<span class="number">.001</span><span class="paren">)</span>; <span class="identifier">densities</span><span class="operator">&lt;-</span><span class="identifier">dnorm</span><span class="paren">(</span><span class="identifier">xseq</span>, <span class="identifier">mean</span><span class="operator">=</span><span class="number">0</span>,<span class="identifier">sd</span><span class="operator">=</span><span class="identifier">SE_pooled</span><span class="paren">)</span><span class="operator">/</span><span class="identifier">length</span><span class="paren">(</span><span class="identifier">xseq</span><span class="paren">)</span>
+<span class="identifier">plot</span><span class="paren">(</span><span class="identifier">xseq</span>, <span class="identifier">densities</span>, <span class="identifier">col</span><span class="operator">=</span><span class="string">"darkgreen"</span>,<span class="identifier">xlab</span><span class="operator">=</span><span class="string">"                                null value         obs. prop. diff."</span>, <span class="identifier">ylab</span><span class="operator">=</span><span class="string">""</span>, <span class="identifier">axes</span> <span class="operator">=</span> <span class="literal">FALSE</span>, <span class="identifier">type</span><span class="operator">=</span><span class="string">"l"</span>,<span class="identifier">lwd</span><span class="operator">=</span><span class="number">2</span>, <span class="identifier">cex</span><span class="operator">=</span><span class="number">2</span>, <span class="identifier">main</span><span class="operator">=</span><span class="string">"Distribution of the test statistic\n if the null hypothesis would be true"</span>, <span class="identifier">cex.axis</span><span class="operator">=</span><span class="number">.8</span>, <span class="identifier">cex.main</span><span class="operator">=</span><span class="number">0.8</span><span class="paren">)</span>
+<span class="identifier">axis</span><span class="paren">(</span><span class="number">1</span>, <span class="identifier">col</span> <span class="operator">=</span> <span class="string">"grey40"</span>, <span class="identifier">col.axis</span> <span class="operator">=</span> <span class="string">"grey20"</span>, <span class="identifier">at</span> <span class="operator">=</span> <span class="identifier">seq</span><span class="paren">(</span><span class="operator">-</span><span class="number">0.18</span>, <span class="number">0.18</span>, <span class="number">0.18</span><span class="paren">)</span><span class="paren">)</span>
+<span class="identifier">axis</span><span class="paren">(</span><span class="number">1</span>, <span class="identifier">col</span> <span class="operator">=</span> <span class="string">"red"</span>, <span class="identifier">col.axis</span> <span class="operator">=</span> <span class="string">"red"</span>, <span class="identifier">at</span> <span class="operator">=</span> <span class="identifier">seq</span><span class="paren">(</span><span class="number">.12</span>, <span class="number">0.12</span>, <span class="number">0.0</span><span class="paren">)</span><span class="paren">)</span>
+<span class="identifier">abline</span><span class="paren">(</span><span class="identifier">h</span><span class="operator">=</span><span class="operator">-</span><span class="number">0.001</span>,<span class="identifier">lwd</span><span class="operator">=</span><span class="number">1</span><span class="paren">)</span>
+<span class="identifier">lines</span><span class="paren">(</span><span class="identifier">x</span><span class="operator">=</span><span class="identifier">c</span><span class="paren">(</span><span class="identifier">p_pointEstimate</span>, <span class="identifier">p_pointEstimate</span><span class="paren">)</span>, <span class="identifier">y</span><span class="operator">=</span><span class="identifier">c</span><span class="paren">(</span><span class="operator">-</span><span class="number">0.001</span>, <span class="number">0.002</span><span class="paren">)</span>, <span class="identifier">col</span><span class="operator">=</span><span class="number">2</span>, <span class="identifier">lwd</span><span class="operator">=</span><span class="number">2</span><span class="paren">)</span>
+<span class="identifier">lines</span><span class="paren">(</span><span class="identifier">x</span><span class="operator">=</span><span class="identifier">c</span><span class="paren">(</span><span class="number">0</span>, <span class="number">0</span><span class="paren">)</span>, <span class="identifier">y</span><span class="operator">=</span><span class="identifier">c</span><span class="paren">(</span><span class="operator">-</span><span class="number">0.001</span>, <span class="number">0.002</span><span class="paren">)</span>, <span class="identifier">col</span><span class="operator">=</span><span class="string">"darkgreen"</span>, <span class="identifier">lwd</span><span class="operator">=</span><span class="number">2</span><span class="paren">)</span>
+<span class="identifier">lines</span><span class="paren">(</span><span class="identifier">x</span><span class="operator">=</span><span class="identifier">c</span><span class="paren">(</span><span class="identifier">p_pointEstimate</span>, <span class="identifier">p_pointEstimate</span><span class="paren">)</span>, <span class="identifier">y</span><span class="operator">=</span><span class="identifier">c</span><span class="paren">(</span><span class="operator">-</span><span class="number">0.001</span>, <span class="number">0.002</span><span class="paren">)</span>, <span class="identifier">col</span><span class="operator">=</span><span class="number">2</span>, <span class="identifier">lwd</span><span class="operator">=</span><span class="number">2</span><span class="paren">)</span>
+<span class="identifier">lines</span><span class="paren">(</span><span class="identifier">x</span><span class="operator">=</span><span class="identifier">c</span><span class="paren">(</span><span class="number">0.14</span>, <span class="number">0.14</span><span class="paren">)</span>, <span class="identifier">y</span><span class="operator">=</span><span class="identifier">c</span><span class="paren">(</span><span class="number">0.002</span>, <span class="number">0.013</span><span class="paren">)</span>, <span class="identifier">col</span><span class="operator">=</span><span class="number">2</span>, <span class="identifier">lwd</span><span class="operator">=</span><span class="number">2</span><span class="paren">)</span>
+<span class="identifier">polygon</span><span class="paren">(</span><span class="identifier">c</span><span class="paren">(</span><span class="identifier">p_pointEstimate</span>,<span class="number">0.18</span><span class="paren">)</span>, <span class="identifier">c</span><span class="paren">(</span><span class="number">0.000001</span>,<span class="number">0</span><span class="paren">)</span>,<span class="identifier">col</span><span class="operator">=</span><span class="string">"red"</span>, <span class="identifier">border</span><span class="operator">=</span><span class="string">"red"</span>, <span class="identifier">lwd</span><span class="operator">=</span><span class="number">2</span><span class="paren">)</span>
+<span class="identifier">text</span> <span class="operator">&lt;-</span> <span class="identifier">paste0</span><span class="paren">(</span><span class="string">"p-value ~ 0"</span><span class="paren">)</span>
+<span class="identifier">text</span><span class="paren">(</span><span class="identifier">x</span> <span class="operator">=</span> <span class="number">0.13</span>, <span class="identifier">y</span> <span class="operator">=</span> <span class="number">0.017</span>, <span class="identifier">labels</span> <span class="operator">=</span> <span class="identifier">text</span>, <span class="identifier">cex</span><span class="operator">=</span><span class="number">0.9</span>, <span class="identifier">col</span><span class="operator">=</span><span class="number">2</span><span class="paren">)</span>
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAMAAAAjXV6yAAABQVBMVEX9/v0AAAAAADkAAGUAOTkAOWUAOY8AZAAAZrUzMzMzM1ozM34zWp8zfsA5AAA5ADk5AGU5OQA5OTk5OWU5OY85ZmU5j485j7U5j9paMzNaM1paM35aWp9aoN9lAABlADllAGVlOQBlOY9lZgBlZjllZmVltdpltf1mZmZ+MzN+M1p+M35+wf2POQCPOTmPZgCPjzmPj2WPtY+P27WP29qP2/2fWjOfwZ+f4P21ZgC1Zjm1tWW124+12/21/rW1/tq1/v3AfjPA/v3ajzna24/a/rXa/tra/v3foFrf/v39jzn9j4/9tWX9wX7924/927X94J/9/rX9/sD9/tr9/t/9/v3+AAD+ADn+AGX+OQD+OTn+OWX+ZgD+Zjn+j9r+tY/+tf3+2/3+/v3/AAD/ADn/AGX/OWX/OY//ZmX/ZrX/j9rPkYYMAAAAa3RSTlP/////////////////////////////////////////////////////////////////////////////////////////////////////////////////AP///////////////////////////y3KCKYAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAmaSURBVHic7ZsNe9PWGYYRaROnKyndstVdO0NbwNu6sJXWa0X34ZJBaGY8hKcAhW1NBGXp//8Bfc+Hjo5kW48t20hxnvsK4fjofEi333Ok9wJdiEkpF+o+gaZDQQAKAlAQgIIAFASgIAAFASgIQEEACgJQEICCABQEoCAABQEoCEBBAAoCUBBgFYIGgdCNh+/0bMVtXZDPg41+1ux2L2uRJ+oEbd1gcDHf4Pb0j67sDzt9iplZiSDR4J9Ydpm+oOLFe5jO0qDQpuSjK0+sXIBVCRrtteUyR3tB0JJfFz8Lgo2/SARdfDfYPJDjUeeG1N4SEaG0kB6fBMZdaDv0Yt1N2ku9VKqI0vW67MbtxVn5804QbN4zw7pKNcW+mqIqqxPUEkHy86+/6lAwS05KUaetBXWlbBadqpHyTtd0lY9ZBAVdabmv25saU3bjxjrcXNkEnT9xOmm36sWsNoLUd7/Rt2vF7kFhyxe0v3ngaqSr+egvMakP1Z7WNjW2nI6rpnNlKaSCXKWd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" alt="plot of chunk unnamed-chunk-10"> </p>
+
+<p>Since the the p-value is very small (practically zero), there is strong evidence in the data against the null hypothesis (see also the figure above). Namely, if there is no difference in community engagement proportions between the U.S. citizens of age 18 or older who have been exposed to the Internet campaign for President and those  who have not been exposed to the Internet campaign for President (i.e., <strong>if <var>H</var><sub>0</sub> would be TRUE</strong>), there is <strong>practically 0% chance of obtaining random samples</strong> of <code>3028</code> exposed and <code>2468</code> not-exposed voters where <strong>community engagement proportion of the U.S. citizens of age 18 or older who <em>have been exposed</em></strong> to the Internet campaign for President <strong>is higher for 0.12 or more</strong> than community engagement proportion of those who <em>have not been exposed</em> to the Internet campaign for President. Therefore, <strong>we reject null hypothesis and conclude that the data provide convincing evidence of an alternative hypothesis.</strong></p>
+
+<h5>Confidence interval</h5>
+
+<p>Since the independence condition for confidence interval and hypothesis test are the same, we have to check only a success-failure condition for confidence interval by using the sample proportions to verify the success-failure condition and compute standard error. As shown (in the excerpt below) calculated values for successes and failures for both groups are much higher than 10. Therefore, <strong>success-failure condition for confidence interval calculation also holds.</strong> </p>
+
+<pre><code class="r"><span class="identifier">exposed_successes</span> <span class="operator">&lt;-</span> <span class="identifier">nExposed</span><span class="operator">*</span><span class="identifier">p_Exposed</span>; <span class="identifier">exposed_failures</span> <span class="operator">&lt;-</span> <span class="identifier">nExposed</span><span class="operator">*</span><span class="paren">(</span><span class="number">1</span><span class="operator">-</span><span class="identifier">p_Exposed</span><span class="paren">)</span> 
+<span class="identifier">non_exposed_successes</span> <span class="operator">&lt;-</span> <span class="identifier">nNotExposed</span><span class="operator">*</span><span class="identifier">p_NotExposed</span>; <span class="identifier">non_exposed_failures</span> <span class="operator">&lt;-</span> <span class="identifier">nNotExposed</span><span class="operator">*</span><span class="paren">(</span><span class="number">1</span><span class="operator">-</span><span class="identifier">p_NotExposed</span><span class="paren">)</span>
+<span class="identifier">data</span> <span class="operator">&lt;-</span> <span class="identifier">c</span><span class="paren">(</span><span class="identifier">paste0</span><span class="paren">(</span><span class="string">"    exposed_successes = "</span>,<span class="identifier">round</span><span class="paren">(</span><span class="identifier">exposed_successes</span><span class="paren">)</span>,<span class="string">"      "</span><span class="paren">)</span>,
+          <span class="identifier">paste0</span><span class="paren">(</span><span class="string">"        exposed_failures = "</span>,<span class="identifier">round</span><span class="paren">(</span><span class="identifier">exposed_failures</span><span class="paren">)</span>,<span class="string">"  \n"</span><span class="paren">)</span>,
+          <span class="identifier">paste0</span><span class="paren">(</span><span class="string">"non_exposed_successes = "</span>,<span class="identifier">round</span><span class="paren">(</span><span class="identifier">non_exposed_successes</span><span class="paren">)</span>,<span class="string">"  "</span><span class="paren">)</span>,
+          <span class="identifier">paste0</span><span class="paren">(</span><span class="string">"        non_exposed_failures = "</span>,<span class="identifier">round</span><span class="paren">(</span><span class="identifier">non_exposed_failures</span><span class="paren">)</span><span class="paren">)</span>,<span class="string">" \n"</span><span class="paren">)</span>
+<span class="identifier">cat</span><span class="paren">(</span><span class="identifier">data</span><span class="paren">)</span>
+</code></pre>
+
+<pre><code>##     exposed_successes = 1475               exposed_failures = 1553  
+##  non_exposed_successes = 908           non_exposed_failures = 1560
+</code></pre>
+
+<p>The standard error, critical value (i.e., z*), and 95% confidence interval are calculated in the code chunk below.</p>
+
+<pre><code class="r"><span class="comment">## 95% CI for difference between two proportions</span>
+<span class="identifier">SE_ci</span> <span class="operator">&lt;-</span> <span class="identifier">sqrt</span><span class="paren">(</span><span class="identifier">p_Exposed</span><span class="operator">*</span><span class="paren">(</span><span class="number">1</span><span class="operator">-</span><span class="identifier">p_Exposed</span><span class="paren">)</span><span class="operator">/</span><span class="identifier">nExposed</span> <span class="operator">+</span><span class="identifier">p_NotExposed</span><span class="operator">*</span><span class="paren">(</span><span class="number">1</span><span class="operator">-</span><span class="identifier">p_NotExposed</span><span class="paren">)</span><span class="operator">/</span><span class="identifier">nNotExposed</span><span class="paren">)</span> <span class="comment"># Standard error for CI</span>
+<span class="identifier">z_asterix</span> <span class="operator">&lt;-</span> <span class="identifier">qnorm</span><span class="paren">(</span><span class="identifier">p</span><span class="operator">=</span><span class="number">0.975</span>, <span class="identifier">m</span><span class="operator">=</span><span class="number">0</span>, <span class="identifier">sd</span><span class="operator">=</span><span class="number">1</span>, <span class="identifier">lower.tail</span> <span class="operator">=</span> <span class="literal">TRUE</span><span class="paren">)</span> <span class="comment"># z* &lt;- 1.96 for 95% CI</span>
+<span class="identifier">CI</span> <span class="operator">&lt;-</span> <span class="identifier">p_pointEstimate</span> <span class="operator">+</span> <span class="identifier">c</span><span class="paren">(</span><span class="operator">-</span><span class="number">1</span>,<span class="number">1</span><span class="paren">)</span><span class="operator">*</span><span class="identifier">z_asterix</span><span class="operator">*</span><span class="identifier">SE_ci</span>
+<span class="identifier">data</span> <span class="operator">&lt;-</span> <span class="identifier">c</span><span class="paren">(</span><span class="identifier">paste0</span><span class="paren">(</span><span class="string">"        SE_ci = "</span>,<span class="identifier">round</span><span class="paren">(</span><span class="identifier">SE_ci</span>,<span class="number">3</span><span class="paren">)</span>,<span class="string">"              ... the standard error for confidence interval\n"</span><span class="paren">)</span>,
+          <span class="identifier">paste0</span><span class="paren">(</span><span class="string">"   z_asterix = "</span>,<span class="identifier">round</span><span class="paren">(</span><span class="identifier">z_asterix</span>,<span class="number">3</span><span class="paren">)</span>,<span class="string">"               ... critical value (i.e., z* )\n"</span><span class="paren">)</span>,
+          <span class="identifier">paste0</span><span class="paren">(</span><span class="string">"      95% CI ~ [ "</span>,<span class="identifier">round</span><span class="paren">(</span><span class="identifier">CI</span>,<span class="number">2</span><span class="paren">)</span><span class="paren">[</span><span class="number">1</span><span class="paren">]</span>,<span class="string">" , "</span>,<span class="identifier">round</span><span class="paren">(</span><span class="identifier">CI</span>,<span class="number">2</span><span class="paren">)</span><span class="paren">[</span><span class="number">2</span><span class="paren">]</span>, <span class="string">" ]    ... 95% confidence interval\n"</span><span class="paren">)</span><span class="paren">)</span>
+<span class="identifier">cat</span><span class="paren">(</span><span class="identifier">data</span><span class="paren">)</span>
+</code></pre>
+
+<pre><code>##         SE_ci = 0.013              ... the standard error for confidence interval
+##     z_asterix = 1.96               ... critical value (i.e., z* )
+##        95% CI ~ [ 0.09 , 0.15 ]    ... 95% confidence interval
+</code></pre>
+
+<p>We are 95% confident that the proportion of community engaged U.S. citizens of age 18 or older who <em>have been exposed</em> to the Internet campaign for President  is between 9% and 15% higher, than the proportion of those who <em>have not been exposed</em> to the Internet campaign for President.</p>
+
+<p>Based on the confidence interval we calculated, we should expect to find the proportion of community engaged U.S. citizens of age 18 or older who <em>have been exposed</em> to the Internet campaign for President  to be higher than the proportion of community engaged U.S. citizens of age 18 or older who <em>have not been exposed</em> to the Internet campaign for President. Namely, 95% confidence interval does not include null value. <strong>Therefore, the results of hypothesis test and confidence interval calculation agree.</strong></p>
+
+<h3>Conclusion:</h3>
+
+<p>The results of our study have shed light on the link between the variables of interest in our research question. The analysis revealed  strong evidence that the U.S. citizens of age 18 or older who have been exposed to the Internet campaign for President are more likely to engage in voluntary community activities than those who have not been exposed to the Internet campaign for President. These results suggest  that the “community involvement” and “post media exposure and attention via Internet” variables are associated. </p>
+
+<p>However, we can not conclude that Internet use for political information has a positive influence on civic engagement in the public sphere, since we have not performed experimental study. It may well be possible that civic engagement and Internet are reciprocally and jointly determined rather than one causing the other.</p>
+
+<p>This study has some limitations because we included only one type of civic engagement (i.e. voluntary work) and one type of Internet use (i.e. use the Internet to obtain information about politics). Another limitation is that data does not include various types of Internet use,  such as campaign websites and e-government, and information technology factors such as Internet experience and broadband use.</p>
+
+<p>It is necessary  to distinguish different use of the Internet and diversity of civic engagement to examine their relationship correctly. Future research could include additional variables that can further shed light on the true nature of the link between civic engagement and use of the Internet. It would be interesting to include a variety of forms of civic engagement, such as voting, working in election campaigns for political parties, contributing to political causes and candidates, contacting public officials, attending public meetings, political rallies, protests or speeches, signing petitions, serving local organizations and many others. </p>
+
+<h3>References</h3>
+
+<ol>
+<li>Park, H.M. and J. L. Perry (2008). Does Internet use really facilitate civic engagement, <em>Civic Engagement in a Network Society</em>, pp. 237-269<br></li>
+<li>Diez D.M., Barr C.D., Cetinkaya-Rundel M. (2014). <em>OpenIntro Statistics</em>, 2nd edition, http://<a href="http://www.openintro.org/stat/textbook.php">http://www.openintro.org/stat/textbook.php</a><br></li>
+<li>The American National Election Studies (2012). <em>ANES 2012 Time Series Study</em>. ICPSR35157-v1. Ann Arbor, MI: Inter-university Consortium for Political and Social Research [distributor], 2014-05-19. <a href="http://doi.org/10.3886/ICPSR35157.v1">http://doi.org/10.3886/ICPSR35157.v1</a></li>
+<li>ANES. (2013). <em>User’s guide and codebook for the ANES 2012 time series study</em>. Ann Arbor, MI &amp; Palo Alto, CA: University of Michigan and Stanford University.</li>
+</ol>
+
+
+
+
+
+<div style="-webkit-background-size: 100%; display: inline-block; float: none; margin: 0px; overflow: visible; padding: 0px; cursor: pointer; visibility: visible; opacity: 0; height: 1.2em; width: 2.07567567567568em; position: absolute; -webkit-transition: opacity 0ms ease-out; transition: opacity 0ms ease-out; z-index: -2147483648; background: url(data:image/png;base64,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) transparent;"></div></body></html>
